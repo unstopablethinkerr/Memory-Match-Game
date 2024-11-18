@@ -1,0 +1,141 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #333;
+    text-align: center;
+  }
+  
+  h1, h2 {
+    color: #fff;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Player Selection */
+  .players {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .player-option {
+    margin: 10px;
+  }
+  
+  /* Game Board */
+  #memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  .card {
+    width: 80px;
+    height: 80px;
+    background: #ddff61;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .card img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .card.flipped img {
+    display: block;
+  }
+  
+  .card.flipped {
+    background: #fff;
+  }
+  
+  /* Scoreboard */
+  #scoreboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  #shuffle-button {
+    background: #ffb400;
+    margin-left: auto;
+  }
+  
+  /* Game Over */
+  #game-over {
+    text-align: center;
+  }
+  /* Flip effect */
+.card.flipping {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+  transition: transform 0.3s ease;
+}
+
+.card.matched {
+  background: #28a745;
+  border: 2px solid #fff;
+}
+
+.card.shrinking {
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Game Over screen styling */
+#game-over h2 {
+  font-size: 2rem;
+  color: #ff9a9e;
+}
+
+#final-score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}

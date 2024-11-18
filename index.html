@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="start-screen">
+      <h1>Memory Game</h1>
+      <button id="start-button">Start Game</button>
+    </div>
+
+    <div id="player-selection" class="hidden">
+      <h2>Select Players</h2>
+      <div class="players">
+        <button class="player-option" data-name="Kael Nova">Kael Nova</button>
+        <button class="player-option" data-name="Zephyr Aella">Zephyr Aella</button>
+        <button class="player-option" data-name="Orion Elara">Orion Elara</button>
+        <button class="player-option" data-name="Jaxon Lyra">Jaxon Lyra</button>
+        <button class="player-option" data-name="Kai Nyx">Kai Nyx</button>
+      </div>
+      <button id="confirm-players" class="hidden">Start Game</button>
+    </div>
+
+    <div id="game-board" class="hidden">
+      <div id="scoreboard">
+        <div id="player1-score">Player 1: <span id="score1">0</span></div>
+        <div id="player2-score">Player 2: <span id="score2">0</span></div>
+        <button id="shuffle-button">Shuffle</button>
+      </div>
+      <div id="memory-grid"></div>
+    </div>
+
+    <div id="game-over" class="hidden">
+      <h2>Game Over!</h2>
+      <p id="final-score"></p>
+      <button id="restart-button">Play Again</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
