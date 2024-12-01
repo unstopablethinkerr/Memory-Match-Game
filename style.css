@@ -176,3 +176,15 @@ button:hover {
 .card.flipped {
   transform: rotateY(180deg);
 }
+
+
+/* Highlight selected player */
+.player-option.selected {
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  border: 2px solid #27ae60;
+}
+
+.player-option.selected:hover {
+  background-color: #27ae60;
+}
