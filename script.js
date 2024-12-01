@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const shuffleButton = document.getElementById('shuffle-button');
   const restartButton = document.getElementById('restart-button');
   const finalScore = document.getElementById('final-score');
+  const player1ScoreElement = document.getElementById('player1-score');
+  const player2ScoreElement = document.getElementById('player2-score');
 
   let selectedPlayers = [];
   let playerScores = [0, 0];
@@ -100,9 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function highlightCurrentPlayer() {
     document.body.style.background =
       currentPlayer === 0 ? "linear-gradient(135deg, #ff6f61, #ff9a9e)" : "linear-gradient(135deg, #61a0ff, #9ecfff)";
-    document.getElementById('player1-score').style.boxShadow =
+    player1ScoreElement.style.boxShadow =
       currentPlayer === 0 ? "0px 0px 15px 5px rgba(255, 105, 97, 0.8)" : "none";
-    document.getElementById('player2-score').style.boxShadow =
+    player2ScoreElement.style.boxShadow =
       currentPlayer === 1 ? "0px 0px 15px 5px rgba(97, 160, 255, 0.8)" : "none";
   }
 
@@ -131,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
   confirmPlayersButton.addEventListener('click', () => {
     playerSelection.classList.add('hidden');
     gameBoard.classList.remove('hidden');
-    document.getElementById('player1-score').innerHTML = `<span style="background: linear-gradient(to right, #ff6f61, #ff9a9e); color: white; padding: 5px; border-radius: 8px;">${selectedPlayers[0]}</span>: <span id="score1">0</span>`;
-    document.getElementById('player2-score').innerHTML = `<span style="background: linear-gradient(to right, #61a0ff, #9ecfff); color: white; padding: 5px; border-radius: 8px;">${selectedPlayers[1]}</span>: <span id="score2">0</span>`;
+    player1ScoreElement.innerHTML = `<span style="background: linear-gradient(to right, #ff6f61, #ff9a9e); color: white; padding: 5px; border-radius: 8px;">${selectedPlayers[0]}</span>: <span id="score1">0</span>`;
+    player2ScoreElement.innerHTML = `<span style="background: linear-gradient(to right, #61a0ff, #9ecfff); color: white; padding: 5px; border-radius: 8px;">${selectedPlayers[1]}</span>: <span id="score2">0</span>`;
     generateCards();
     highlightCurrentPlayer();
   });
