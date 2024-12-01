@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('start-button');
   const playerSelection = document.getElementById('player-selection');
   const confirmPlayersButton = document.getElementById('confirm-players');
@@ -71,18 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
       matchedPairs++;
       flippedCards = [];
 
-      // Highlight matched cards before removing
+      // Highlight matched cards before hiding
       card1.classList.add('matched');
       card2.classList.add('matched');
 
       setTimeout(() => {
-        card1.classList.add('shrinking');
-        card2.classList.add('shrinking');
-        setTimeout(() => {
-          card1.remove();
-          card2.remove();
-          isFlipping = false; // Allow flipping again
-        }, 300); // Shrinking duration
+        card1.classList.add('hidden');
+        card2.classList.add('hidden');
+        isFlipping = false; // Allow flipping again
       }, 500);
 
       playerScores[currentPlayer]++;
@@ -149,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Shuffle remaining cards
   shuffleButton.addEventListener('click', () => {
-    const remainingCards = Array.from(document.querySelectorAll('.card:not(.matched)'));
+    const remainingCards = Array.from(document.querySelectorAll('.card:not(.matched):not(.hidden)'));
     const remainingImages = remainingCards.map((card) => card.dataset.image);
     shuffle(remainingImages);
 
