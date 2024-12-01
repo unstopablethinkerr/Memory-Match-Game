@@ -169,7 +169,6 @@ button:hover {
   border: 2px solid #fff;
 }
 
-.card.shrinking {
-  transform: scale(0);
-  transition: transform 0.3s ease-in-out;
+.card.hidden {
+  visibility: hidden;
 }
