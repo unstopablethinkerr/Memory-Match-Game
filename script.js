@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (e) => {
       if (selectedPlayers.length < 2) {
         selectedPlayers.push(e.target.dataset.name);
+        e.target.classList.add('selected'); // Highlight the selected player
         e.target.disabled = true;
       }
       if (selectedPlayers.length === 2) {
