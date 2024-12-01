@@ -110,12 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Highlight current player
   function highlightCurrentPlayer() {
-    document.getElementById('scoreboard').style.boxShadow =
-      currentPlayer === 0 ? "0px 0px 15px 5px rgba(255, 105, 97, 0.8)" : "0px 0px 15px 5px rgba(97, 160, 255, 0.8)";
-    player1ScoreElement.style.boxShadow =
-      currentPlayer === 0 ? "0px 0px 15px 5px rgba(255, 105, 97, 0.8)" : "none";
-    player2ScoreElement.style.boxShadow =
-      currentPlayer === 1 ? "0px 0px 15px 5px rgba(97, 160, 255, 0.8)" : "none";
+    player1ScoreElement.classList.remove('current-player');
+    player2ScoreElement.classList.remove('current-player');
+    if (currentPlayer === 0) {
+      player1ScoreElement.classList.add('current-player');
+    } else {
+      player2ScoreElement.classList.add('current-player');
+    }
   }
 
   // Update scores
