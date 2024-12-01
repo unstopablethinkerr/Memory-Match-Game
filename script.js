@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let cards = [];
   let flippedCards = [];
   let matchedPairs = 0;
+  let isFlipping = false; // Flag to prevent flipping more than two cards
 
   const images = Array.from({ length: 12 }, (_, i) => `images/img${i + 1}.jpg`);
 
@@ -46,15 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Flip card
   function flipCard() {
-    if (flippedCards.length >= 2 || this.classList.contains('flipped')) return;
+    if (flippedCards.length >= 2 || this.classList.contains('flipped') || isFlipping) return;
 
     this.classList.add('flipping');
+    isFlipping = true; // Prevent further flipping
     setTimeout(() => {
       this.classList.remove('flipping');
       this.classList.add('flipped');
       flippedCards.push(this);
 
-      if (flippedCards.length === 2) checkMatch();
+      if (flippedCards.length === 2) {
+        checkMatch();
+      } else {
+        isFlipping = false; // Allow flipping again
+      }
     }, 300); // Slight delay for flip effect
   }
 
@@ -75,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           card1.remove();
           card2.remove();
+          isFlipping = false; // Allow flipping again
         }, 300); // Shrinking duration
       }, 500);
 
@@ -87,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card1.classList.remove('flipped');
         card2.classList.remove('flipped');
         flippedCards = [];
+        isFlipping = false; // Allow flipping again
         switchTurn();
       }, 1000);
     }
