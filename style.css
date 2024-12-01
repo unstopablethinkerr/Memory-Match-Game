@@ -81,6 +81,16 @@ button:hover {
   cursor: not-allowed;
 }
 
+.player-option.selected {
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  cursor: not-allowed;
+}
+
+.player-option.selected:hover {
+  background-color: #27ae60;
+}
+
 /* Game Board */
 #memory-grid {
   display: grid;
@@ -151,6 +161,15 @@ button:hover {
   background: #c0392b;
 }
 
+/* Highlight current player */
+#scoreboard .current-player {
+  border: 2px solid #ffdc00;
+  background-color: rgba(255, 220, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 220, 0, 0.8);
+  border-radius: 8px;
+  padding: 5px;
+}
+
 /* Game Over */
 #game-over {
   text-align: center;
@@ -175,16 +194,4 @@ button:hover {
 
 .card.flipped {
   transform: rotateY(180deg);
-}
-
-
-/* Highlight selected player */
-.player-option.selected {
-  background-color: #2ecc71;
-  color: #ecf0f1;
-  border: 2px solid #27ae60;
-}
-
-.player-option.selected:hover {
-  background-color: #27ae60;
 }
