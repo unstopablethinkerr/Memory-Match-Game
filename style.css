@@ -1,10 +1,10 @@
- /* General Styling */
+/* General Styling */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  color: #333;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  color: #ecf0f1;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ body {
 }
 
 h1, h2 {
-  color: #fff;
+  color: #f1c40f;
   margin: 0;
 }
 
@@ -22,8 +22,8 @@ h1, h2 {
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #3498db;
+  color: #ecf0f1;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #2980b9;
 }
 
 #game-container {
@@ -41,9 +41,9 @@ button:hover {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(44, 62, 80, 0.9);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Start Screen */
@@ -63,8 +63,8 @@ button:hover {
 .player-option {
   margin: 10px;
   padding: 10px 20px;
-  background-color: #ff6f61;
-  color: #fff;
+  background-color: #e67e22;
+  color: #ecf0f1;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -73,11 +73,11 @@ button:hover {
 }
 
 .player-option:hover {
-  background-color: #ff4c41;
+  background-color: #d35400;
 }
 
 .player-option:disabled {
-  background-color: #ccc;
+  background-color: #7f8c8d;
   cursor: not-allowed;
 }
 
@@ -93,17 +93,18 @@ button:hover {
 .card {
   width: 80px;
   height: 80px;
-  background: #ddff61;
+  background: #1abc9c;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #2c3e50;
   font-size: 20px;
   text-align: center;
   position: relative;
   perspective: 1000px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .card img {
@@ -119,7 +120,16 @@ button:hover {
 }
 
 .card.flipped {
-  background: #fff;
+  background: #ecf0f1;
+}
+
+.card.matched {
+  background: #27ae60;
+  border: 2px solid #ecf0f1;
+}
+
+.card.hidden {
+  visibility: hidden;
 }
 
 /* Scoreboard */
@@ -129,11 +139,16 @@ button:hover {
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
+  color: #ecf0f1;
 }
 
 #shuffle-button {
-  background: #ffb400;
+  background: #e74c3c;
   margin-left: auto;
+}
+
+#shuffle-button:hover {
+  background: #c0392b;
 }
 
 /* Game Over */
@@ -143,32 +158,21 @@ button:hover {
 
 #game-over h2 {
   font-size: 2rem;
-  color: #ff9a9e;
+  color: #f39c12;
 }
 
 #final-score {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  color: #ecf0f1;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* Flip effect */
 .card.flipping {
   transform: scale(0.95);
-  transition: transform 0.3s ease-in-out;
 }
 
 .card.flipped {
   transform: rotateY(180deg);
-  transition: transform 0.3s ease;
-}
-
-.card.matched {
-  background: #28a745;
-  border: 2px solid #fff;
-}
-
-.card.hidden {
-  visibility: hidden;
 }
