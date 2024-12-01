@@ -1,4 +1,4 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.getElementById('start-button');
   const playerSelection = document.getElementById('player-selection');
   const confirmPlayersButton = document.getElementById('confirm-players');
@@ -20,6 +20,7 @@
   let isFlipping = false; // Flag to prevent flipping more than two cards
 
   const images = Array.from({ length: 12 }, (_, i) => `images/img${i + 1}.jpg`);
+  const fallbackImage = 'images/default.jpg'; // Placeholder image
 
   // Shuffle function
   function shuffle(array) {
@@ -39,6 +40,9 @@
       card.classList.add('card');
       card.dataset.image = image;
       card.innerHTML = `<img src="${image}" alt="Memory Card ${index + 1}">`;
+      card.querySelector('img').onerror = function () {
+        this.src = fallbackImage;
+      };
       memoryGrid.appendChild(card);
     });
     cards = document.querySelectorAll('.card');
@@ -47,7 +51,7 @@
 
   // Flip card
   function flipCard() {
-    if (flippedCards.length >= 2 || this.classList.contains('flipped') || isFlipping) return;
+    if (flippedCards.length >= 2 || this.classList.contains('flipped') || isFlipping || flippedCards.includes(this)) return;
 
     this.classList.add('flipping');
     isFlipping = true; // Prevent further flipping
@@ -78,6 +82,8 @@
       setTimeout(() => {
         card1.classList.add('hidden');
         card2.classList.add('hidden');
+        card1.removeEventListener('click', flipCard);
+        card2.removeEventListener('click', flipCard);
         isFlipping = false; // Allow flipping again
       }, 500);
 
@@ -104,8 +110,8 @@
 
   // Highlight current player
   function highlightCurrentPlayer() {
-    document.body.style.background =
-      currentPlayer === 0 ? "linear-gradient(135deg, #ff6f61, #ff9a9e)" : "linear-gradient(135deg, #61a0ff, #9ecfff)";
+    document.getElementById('scoreboard').style.boxShadow =
+      currentPlayer === 0 ? "0px 0px 15px 5px rgba(255, 105, 97, 0.8)" : "0px 0px 15px 5px rgba(97, 160, 255, 0.8)";
     player1ScoreElement.style.boxShadow =
       currentPlayer === 0 ? "0px 0px 15px 5px rgba(255, 105, 97, 0.8)" : "none";
     player2ScoreElement.style.boxShadow =
@@ -130,7 +136,12 @@
         selectedPlayers.push(e.target.dataset.name);
         e.target.disabled = true;
       }
-      if (selectedPlayers.length === 2) confirmPlayersButton.classList.remove('hidden');
+      if (selectedPlayers.length === 2) {
+        document.querySelectorAll('.player-option').forEach((button) => {
+          button.disabled = true;
+        });
+        confirmPlayersButton.classList.remove('hidden');
+      }
     })
   );
 
@@ -145,7 +156,7 @@
 
   // Shuffle remaining cards
   shuffleButton.addEventListener('click', () => {
-    const remainingCards = Array.from(document.querySelectorAll('.card:not(.matched):not(.hidden)'));
+    const remainingCards = Array.from(document.querySelectorAll('.card:not(.flipped):not(.hidden):not(.matched)'));
     const remainingImages = remainingCards.map((card) => card.dataset.image);
     shuffle(remainingImages);
 
